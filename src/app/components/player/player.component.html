@@ -1,0 +1,38 @@
+<form #playersForm="ngForm" (ngSubmit)="addPlayers(playersForm.value)">
+    <div class="form-group">
+        <label for="playerName">
+            Player Name
+        </label>
+        <input required minlength="3" ngModel name=" playerName " #playerName="ngModel" type="text" id="PlayerName " class="form-control ">
+        <div *ngIf="playerName.touched && playerName.invalid" class=" alert alert-danger ">
+            <!-- <div *ngIf="courtName.errors.required"> Court name field is required.</div>
+            <div *ngIf="courtName.errors.minlength!"> Court name must be longer than {{ courtName.errors.minlength!.requiredLength}} characters.</div> -->
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="playerAge">
+            Player age
+        </label>
+        <input ngModel name=" playerAge " #playerAge="ngModel" type="number " id="playerAge " class="form-control ">
+    </div>
+    <div class="form-group ">
+        <label for="playerHeight ">
+            Player height
+        </label>
+        <input ngModel name=" playerHeight " #playerHeight="ngModel" type="number " id="playerHeight " class="form-control ">
+    </div>
+    <div class="form-group ">
+        <label for="playerRating ">
+            Player rating
+        </label>
+        <input ngModel name=" playerRating " #playerRatinge="ngModel" type="number " id="playerRating " class="form-control ">
+    </div>
+    <div class="checkbox">
+        <label for="hasBasketball">
+            <input ngModel name="hasBasketball" type="checkbox" id="hasBasketball">
+            Check if Player has a basketball
+        </label>
+    </div>
+    <p>{{playersForm.value | json}}</p>
+    <button class="btn btn-primary" [disabled]="playersForm.invalid">Add Player</button>
+</form>

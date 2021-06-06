@@ -1,0 +1,42 @@
+<form #courtLocationForm="ngForm" (ngSubmit)="addCourtLocation(courtLocationForm.value)">
+    <div class="form-group">
+        <label for="locationName">
+            Basketball Court Name
+        </label>
+        <input required minlength="3" ngModel name=" courtName " #courtName="ngModel" type="text" id="locationName " class="form-control ">
+        <div *ngIf="courtName.touched && courtName.invalid" class=" alert alert-danger ">
+            <!-- <div *ngIf="courtName.errors.required"> Court name field is required.</div>
+            <div *ngIf="courtName.errors.minlength!"> Court name must be longer than {{ courtName.errors.minlength!.requiredLength}} characters.</div> -->
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="covered ">
+            Is the Basketball court covered?
+        </label>
+        <select ngModel name=" isCovered " #isCovered="ngModel" id="covered " class="form-control ">
+            <option value=" "></option>
+            <option *ngFor="let c of covered " [value]="c.id ">{{c.name}}</option>
+
+        </select>
+    </div>
+    <div class="form-group ">
+        <label for="locationCost ">
+            Basketball Court cost per hour
+        </label>
+        <input ngModel name=" locationCost " #locationCost="ngModel" type="number " id="locationCost " class="form-control ">
+    </div>
+    <div class="form-group ">
+        <label for="locationLongitude ">
+            Basketball Court location LONGITUDE
+        </label>
+        <input ngModel name=" locationLongitude " #locationLongitude="ngModel" type="number " id="locationlongitude " class="form-control ">
+    </div>
+    <div class="form-group ">
+        <label for="locationLatitude ">
+            Basketball Court location Latitude
+        </label>
+        <input ngModel name=" locationLatitude " #locationLatitude="ngModel" type="number " id="locationLatitude " class="form-control ">
+    </div>
+    <p>{{courtLocationForm.value | json}}</p>
+    <button class="btn btn-primary" [disabled]="courtLocationForm.invalid">Add Location</button>
+</form>
